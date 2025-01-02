@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer's Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to the Farmer's Portal</h1>
+        <p>Your gateway to better farming practices</p>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#tips">Farming Tips</a></li>
+            <li><a href="#weather">Weather Updates</a></li>
+            <li><a href="#pdfUploader">PDF Uploader</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We aim to provide farmers with the latest information, best practices, and tools to improve crop yield and sustainability.</p>
+    </section>
+
+    <!-- Farming Tips Section -->
+    <section id="tips">
+        <h2>Farming Tips</h2>
+        <ul>
+            <li>Use crop rotation to maintain soil fertility.</li>
+            <li>Adopt drip irrigation for water efficiency.</li>
+            <li>Use organic fertilizers to reduce chemical use.</li>
+            <li>Plant pest-resistant crop varieties.</li>
+        </ul>
+    </section>
+
+    <!-- Weather Updates Section -->
+    <section id="weather">
+        <h2>Weather Updates</h2>
+        <p>Stay updated with the latest weather conditions for optimal crop planning.</p>
+        <button onclick="showWeather()" aria-label="Get Weather Update">Get Weather Update</button>
+        <p id="weatherInfo"></p>
+    </section>
+
+    <!-- PDF Uploader Section -->
+    <section id="pdfUploader">
+        <h2>📑 Chapter-wise PDF Uploads</h2>
+
+        <!-- Chapter 1 PDFs -->
+        <div class="pdf-section">
+            <h3>📂 Chapter 1</h3>
+            <input type="file" id="chapter1PdfUpload" accept="application/pdf" aria-label="Upload Chapter 1 PDF">
+            <button onclick="displayPDF('chapter1PdfUpload', 'chapter1PdfViewer')" aria-label="Upload Chapter 1 PDF">Upload Chapter 1 PDF</button>
+            <iframe id="chapter1PdfViewer" width="100%" height="300px"></iframe>
+        </div>
+
+        <!-- Chapter 2 PDFs -->
+        <div class="pdf-section">
+            <h3>📂 Chapter 2</h3>
+            <input type="file" id="chapter2PdfUpload" accept="application/pdf" aria-label="Upload Chapter 2 PDF">
+            <button onclick="displayPDF('chapter2PdfUpload', 'chapter2PdfViewer')" aria-label="Upload Chapter 2 PDF">Upload Chapter 2 PDF</button>
+            <iframe id="chapter2PdfViewer" width="100%" height="300px"></iframe>
+        </div>
+
+        <!-- Chapter 3 PDFs -->
+        <div class="pdf-section">
+            <h3>📂 Chapter 3</h3>
+            <input type="file" id="chapter3PdfUpload" accept="application/pdf" aria-label="Upload Chapter 3 PDF">
+            <button onclick="displayPDF('chapter3PdfUpload', 'chapter3PdfViewer')" aria-label="Upload Chapter 3 PDF">Upload Chapter 3 PDF</button>
+            <iframe id="chapter3PdfViewer" width="100%" height="300px"></iframe>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions? Reach out to us!</p>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Your Name" required aria-label="Enter your name"><br>
+            <label for="message">Message:</label>
+            <textarea id="message" placeholder="Your Message" required aria-label="Enter your message"></textarea><br>
+            <button type="submit" aria-label="Send Message">Send</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Farmer's Portal. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FDFDFD;
+}
+
+header {
+    background: #3A7D44;
+    color: #FFF;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    justify-content: center;
+    background: #4CAF50;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Sections */
+section {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #388E3C;
+}
+
+/* PDF Section */
+.pdf-section {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #D3E3D8;
+    border-radius: 8px;
+}
+
+.pdf-section h3 {
+    margin-bottom: 10px;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #388E3C;
+}
+
+iframe {
+    margin-top: 15px;
+    border: 1px solid #B0BEC5;
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #2C6E49;
+    color: white;
+}
+// Display PDF Function
+function displayPDF(uploadId, viewerId) {
+    const fileInput = document.getElementById(uploadId);
+    const pdfViewer = document.getElementById(viewerId);
+
+    if (fileInput.files.length === 0) {
+        alert('Please select a PDF file to upload.');
+        return;
+    }
+
+    const file = fileInput.files[0];
+
+    if (file.type !== 'application/pdf') {
+        alert('Only PDF files are allowed!');
+        return;
+    }
+
+    const fileURL = URL.createObjectURL(file);
+    pdfViewer.src = fileURL;
+}
+
+// Dummy Weather Update Function
+function showWeather() {
+    document.getElementById('weatherInfo').innerText = "Today's weather is sunny with a temperature of 30°C.";
+}
